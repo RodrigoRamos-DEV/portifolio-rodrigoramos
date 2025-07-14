@@ -45,17 +45,9 @@ export function Contact() {
             Você também pode me encontrar nas seguintes plataformas:
           </p>
           <div className="flex gap-6">
+            
             <a
-              href="https://github.com/seu-usuario" // <-- MUDE AQUI
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-400 transition hover:text-blue-400"
-              aria-label="Link para o GitHub"
-            >
-              <Github size={32} />
-            </a>
-            <a
-              href="https://linkedin.com/in/seu-usuario" // <-- MUDE AQUI
+              href="https://www.linkedin.com/in/rodrigo-ramos-048383b4/" // <-- MUDE AQUI
               target="_blank"
               rel="noreferrer"
               className="text-gray-400 transition hover:text-blue-400"

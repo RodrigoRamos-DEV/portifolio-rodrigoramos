@@ -95,9 +95,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       <LinkIcon size={18}/> Ver Site
                     </a>
                   )}
-                  <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-md bg-gray-700 px-4 py-2 font-semibold text-white transition hover:bg-gray-600">
-                    <Github size={18} /> Ver Código
-                  </a>
+                 
                 </div>
               </Dialog.Panel>
             </Transition.Child>
