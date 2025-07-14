@@ -4,7 +4,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Image from 'next/image';
-import { Github, Link as LinkIcon, X } from 'lucide-react';
+import { Link as LinkIcon, X } from 'lucide-react';
 
 // 1. Importar Swiper e seus módulos/estilos
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -20,7 +20,6 @@ type Project = {
   longDescription?: string;
   images: string[]; // <-- MUDOU DE 'image' PARA 'images' (array)
   tech: string[];
-  github: string;
   link?: string;
 };
 

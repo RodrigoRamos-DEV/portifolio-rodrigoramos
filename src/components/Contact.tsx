@@ -3,7 +3,7 @@
 // 1. Adicionamos 'use client' no topo para poder usar hooks do React
 'use client';
 
-import { Github, Linkedin } from 'lucide-react';
+import {  Linkedin } from 'lucide-react';
 import { useState } from 'react'; // 2. Importamos o useState
 
 export function Contact() {

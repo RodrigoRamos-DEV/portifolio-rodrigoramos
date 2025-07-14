@@ -13,6 +13,14 @@ type DistortionImageProps = {
   alt: string;
 };
 
+// Interface para definir o tipo do evento do mouse, corrigindo o 'any'
+interface PointerMoveEvent {
+  uv: {
+    x: number;
+    y: number;
+  };
+}
+
 // Componente interno que renderiza o plano 3D com a imagem
 function ImagePlane({ src }: { src: string }) {
   // Hook do R3F que nos dá informações sobre a cena, incluindo a viewport
@@ -39,7 +47,7 @@ function ImagePlane({ src }: { src: string }) {
   });
 
   // Função chamada quando o mouse se move sobre o objeto
-  const handlePointerMove = (e: any) => {
+  const handlePointerMove = (e: PointerMoveEvent) => {
     if (shaderRef.current) {
       // Atualiza o uniform 'uMouse' com as coordenadas do mouse (convertidas para 0-1)
       shaderRef.current.uniforms.uMouse.value.x = e.uv.x;
