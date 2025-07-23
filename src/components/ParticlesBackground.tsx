@@ -21,11 +21,12 @@ export function ParticlesBackground() {
       y: null as number | null,
       radius: 120
     };
-
-    window.addEventListener('mousemove', function(event) {
+    
+    const handleMouseMove = (event: MouseEvent) => {
       mouse.x = event.x;
       mouse.y = event.y;
-    });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
 
     class Particle {
       x: number;
@@ -66,9 +67,9 @@ export function ParticlesBackground() {
         }
 
         if (mouse.x !== null && mouse.y !== null) {
-          let dx = mouse.x - this.x;
-          let dy = mouse.y - this.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
+          const dx = mouse.x - this.x; // CORRIGIDO
+          const dy = mouse.y - this.y; // CORRIGIDO
+          const distance = Math.sqrt(dx * dx + dy * dy); // CORRIGIDO
           if (distance < mouse.radius) {
             this.size = 5;
             this.color = "#ffffff";
@@ -88,6 +89,7 @@ export function ParticlesBackground() {
     let particlesArray: Particle[];
 
     function init() {
+      if(!canvas) return;
       particlesArray = [];
       const numberOfParticles = (canvas.width * canvas.height) / 9000;
       for (let i = 0; i < numberOfParticles; i++) {
@@ -103,15 +105,15 @@ export function ParticlesBackground() {
     }
 
     function connect() {
-        if (!ctx) return;
+      if (!ctx) return;
       for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a; b < particlesArray.length; b++) {
-          let dx = particlesArray[a].x - particlesArray[b].x;
-          let dy = particlesArray[a].y - particlesArray[b].y;
+          const dx = particlesArray[a].x - particlesArray[b].x; // CORRIGIDO
+          const dy = particlesArray[a].y - particlesArray[b].y; // CORRIGIDO
           let distance = dx * dx + dy * dy;
 
           if (distance < 12000) {
-            let colorA = particlesArray[a].color;
+            const colorA = particlesArray[a].color; // CORRIGIDO
             let strokeStyle;
 
             if (colorA.startsWith('hsl')) {
@@ -143,26 +145,25 @@ export function ParticlesBackground() {
 
       connect();
     }
-
-    init();
-    animate();
-
+    
     const handleResize = () => {
         if (!canvas) return;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         init();
     }
-
     window.addEventListener('resize', handleResize);
+
+    init();
+    animate();
 
     return () => {
         window.removeEventListener('resize', handleResize);
-        window.removeEventListener('mousemove', () => {});
+        window.removeEventListener('mousemove', handleMouseMove);
         cancelAnimationFrame(animationFrameId);
     }
 
   }, []);
 
-  return <canvas ref={canvasRef} id="particle-canvas"></canvas>;
+  return <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1, width: '100%', height: '100%' }} />;
 }
