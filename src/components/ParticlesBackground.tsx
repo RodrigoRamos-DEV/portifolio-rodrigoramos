@@ -67,9 +67,9 @@ export function ParticlesBackground() {
         }
 
         if (mouse.x !== null && mouse.y !== null) {
-          const dx = mouse.x - this.x; // CORRIGIDO
-          const dy = mouse.y - this.y; // CORRIGIDO
-          const distance = Math.sqrt(dx * dx + dy * dy); // CORRIGIDO
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < mouse.radius) {
             this.size = 5;
             this.color = "#ffffff";
@@ -108,12 +108,12 @@ export function ParticlesBackground() {
       if (!ctx) return;
       for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a; b < particlesArray.length; b++) {
-          const dx = particlesArray[a].x - particlesArray[b].x; // CORRIGIDO
-          const dy = particlesArray[a].y - particlesArray[b].y; // CORRIGIDO
-          let distance = dx * dx + dy * dy;
+          const dx = particlesArray[a].x - particlesArray[b].x;
+          const dy = particlesArray[a].y - particlesArray[b].y;
+          const distance = dx * dx + dy * dy; // CORRIGIDO AQUI
 
           if (distance < 12000) {
-            const colorA = particlesArray[a].color; // CORRIGIDO
+            const colorA = particlesArray[a].color;
             let strokeStyle;
 
             if (colorA.startsWith('hsl')) {
